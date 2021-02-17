@@ -3,7 +3,7 @@ import { UserManager, User } from 'oidc-client';
 import { Subject } from 'rxjs';
 import { Constants } from '../constants';
 
-@Injectable({providedIn: 'root'})
+//@Injectable({providedIn: 'root'})
 export class AuthService {
 
     private _userManager: UserManager;

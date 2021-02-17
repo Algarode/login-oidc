@@ -1,6 +1,5 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from './core/auth-service.component';
+import { AuthService } from '@auth0/auth0-angular';
 
 @Component({
   selector: 'app-root',
@@ -11,19 +10,14 @@ export class AppComponent implements OnInit {
   title = 'login-client';
   isLoggedIn = false;
 
-  constructor(private _authService: AuthService) {
-    this._authService.loginChanged.subscribe(loggedIn => {
-      this.isLoggedIn = loggedIn;
-    })
+  constructor(private auth: AuthService) {//private _authService: AuthService
   }
 
   ngOnInit(): void {
-    this._authService.isLoggedIn().then(loggedIn => {
-      this.isLoggedIn = loggedIn;
-    })
+    
   }
 
   login() {
-    this._authService.login();
+    this.auth.loginWithRedirect();
   }
 }
